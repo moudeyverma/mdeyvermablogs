@@ -33,8 +33,9 @@ For upgrading to latest version use the below tools-
   - Left the WCF services untouched, hosted in ASF with worker role and customization. [know more](https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-communication-wcf).
   Since customer is planning eventually to move everything to linux containers ,so later they have to re implement the WCF part with more modern technologies like gRPC or http Request/Response webApIs.
 <br><br>Refer to the below links to find out the correct base image, that has IIS Roles enabled for windows containers
-[https://mcr.microsoft.com/en-us/product/dotnet/framework/aspnet/about](https://mcr.microsoft.com/en-us/product/dotnet/framework/aspnet/about)
-<br>[https://hub.docker.com/_/microsoft-windows-servercore-iis?tab=description](https://hub.docker.com/_/microsoft-windows-servercore-iis?tab=description)
+https://mcr.microsoft.com/en-us/product/dotnet/framework/aspnet/about
+<br>
+https://hub.docker.com/_/microsoft-windows-servercore-iis?tab=description
 
 ## Developer steps
 Changes are to be made in the new or existing repository as per the organization process.
