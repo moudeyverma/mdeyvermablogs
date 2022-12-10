@@ -56,6 +56,17 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - If your repo has multiple solutions and they are configured to build the pipeline, then update them all together to use the new version. 
   - Some NuGet will give errors, reinstall them again, fix the issues locally. It will not affect the pipeline build because the NuGet is installed every time the pipeline runs.
   - In Package.Config change the tag httpRuntime in System.web section, add/change the value to "targetframework ="4.8""
+  - There will be a new session state tag added in we.config. Remove that was added while installation.
+  - Ignore Content, Fonts and Script folder while pushing the changes on git.
+  - Comment the dependency from we.config file for System.Net.Http
+>     <!--<dependentAssembly>
+>        <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral"/>
+>        <bindingRedirect oldVersion="0.0.0.0-4.2.0.0" newVersion="4.2.0.0"/>
+>     </dependentAssembly>-->
+>     <!--<dependentAssembly>
+>        <assemblyIdentity name="System.IO.Compression" publicKeyToken="b77a5c561934e089" culture="neutral"/>
+>        <bindingRedirect oldVersion="0.0.0.0-4.2.0.0" newVersion="4.2.0.0"/>
+>      </dependentAssembly>-->
   - The target framework moniker (TFM) to apply when installing the package. This is initially set to the project's target when a package is installed. As a result, different <package> elements can have different TFMs. [Know more](https://learn.microsoft.com/en-us/nuget/reference/target-frameworks)
   - If the AKS deployment folder is not available, create and add the yaml files to the AKS deployment folder. Change Docker image for latest version. 
   - In Docker file you may get few errors related to "Import-Module WebAdministration" in POWERSHELL command. Check the [reference link](https://docs.docker.com/engine/reference/builder/#shell). If the Web server Role (IIS) is not active/installed, you need to enable the Web Role before "Import-Module WebAdministration" like this.
