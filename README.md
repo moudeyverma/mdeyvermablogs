@@ -76,6 +76,11 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - AKS container hosted sites interact with ASF hosted WCF services.
   - Changes related to Common dLL will be required to be published first, to be consumed by others.
   - The Service Fabric programming models like reliable services, reliable actors, Guest executables will need revisit or redesign.
+  
+ ##### If your Service Fabric source also need a continuous deployment in pre production environments due to changes in feature ,upgrade of framework version of dependencies etc ,until there is a cut off for aks production , do consider the below points-
+  - Check the [table](https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-versions) for service Fabric supported versions
+  - Since the .net framework 4.8 is not come as packaged runtime version with SF ver-9.0.1048(Current packaged .net version s 4.7.3), you have to install .net 4.8 manually in nodes.
+  - Write a powershell script for Custion Script Extionsion. [Know More](https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows)
 
 #### DevOps practices
   - All developers to install the latest version of Visual Studio 2019 (or greater) and appropriate .NET SDK. 
@@ -175,6 +180,6 @@ With latest deployment in AKS, We performed various performance tests and used m
 <br>
 <br>
 <br>
-Feedback appreciated               __[By Moumita Dey Verma](https://www.linkedin.com/in/moumita-dey-verma-8b61692a/)__  11/25/2022
+Feedback appreciated               __[By Moumita Dey Verma](https://www.linkedin.com/in/moumita-dey-verma-8b61692a/)__  11/25/2022,  Last updated on 12/13/2022
 
 
