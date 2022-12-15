@@ -1,18 +1,10 @@
 # Migration journey from Azure Service Fabric(ASF) Containers to Azure Kubernetes Service(AKS)  
-This article is a direct recount of migration journey from ASF - containers to AKS containers for a 8 years old legacy app.
-<br>
-When we had just started out, we could not find appropriate guidelines or steps to ease us through the process. I hope this article will help those of you planning a similar journey to AKS.
-<br>
-Journey began when one of our costumers got the [communication](https://techcommunity.microsoft.com/t5/containers/reminder-updates-to-windows-container-runtime-support/ba-p/3620989) that  for their stable workloads deployed in ASF containers they have to face issues. ASF windows containers were internally using Mirantis Container Runtime, former DockerEE.
-<br>
-> **"Post 30 April 2023 Service Fabric customers using “with containers” VM images will face service disruptions as Microsoft will remove the “with container” VM images from the Azure image gallery".**
-
-<br>After initial investigation we figured out that moving to AKS Linux container is in the final roadmap of the current product.
+This article is a direct recount of migration journey from ASF - containers to AKS containers for a old legacy app.
 <br>
 ## Decision Factors
 The code is legacy and we didn't have enough time to rewrite the code within a short duration from .net framework to .net core and deploy all in Linux container.So we started our journey with combination of two types of workloads **Windows and Linux**.
 <br>
-Also we had to choose the highest common supported .NET version for win 2019 and win 2022. Since ASF workloads were still modified and deployed in parallel in ASF using win 2019, we chose the latest common version 4.8. [know more](https://github.com/microsoft/dotnet-framework-docker/issues/849)
+Also choose the highest common supported .NET version for win 2019 and win 2022. If  ASF workloads are still modified and deployed in parallel in ASF using win 2019,  chose the latest common version 4.8. [know more](https://github.com/microsoft/dotnet-framework-docker/issues/849)
 <br>
 #### We took the below approach to upgrade framework
   - Upgraded from .net framework current version to the latest version 4.8 and deployed in AKS **Windows** containers.(Approx 7x projects)
@@ -31,7 +23,7 @@ For upgrading to latest version use the below tools-
   - Moved existing windows containers to latest AKS windows containers- WS2022 for several number of important reasons [know more](https://learn.microsoft.com/en-us/virtualization/windowscontainers/about/whats-new-ws2022-containers)
   * Moved the existing linux containers to AKS Linux containers 
   - Left the WCF services untouched, hosted in ASF with worker role and customization. [know more](https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-communication-wcf).
-  Since customer is planning eventually to move everything to linux containers ,so later they have to re implement the WCF part with more modern technologies like gRPC or http Request/Response webApIs.
+  Since the final target is to eventually move everything to linux containers ,so the WCF can be redesigned with more modern technologies like gRPC or http Request/Response webApIs.
 <br><br>Refer to the below links to find out the correct base image, that has IIS Roles enabled for windows containers
 https://mcr.microsoft.com/en-us/product/dotnet/framework/aspnet/about
 <br>https://hub.docker.com/_/microsoft-windows-servercore-iis?tab=description
@@ -91,8 +83,8 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - You may find “DLL not found issue” with the upgrade, to solve this please remove the related binding from the web.config and run the build again.
 
 #### Code Changes 
-  - Add K8s.deployment folder in Repo.
-  - Change Environment variable to Config.yaml (refer to Service manifest used for ASF all used env variables from service manifest file must be moved to config.yaml)
+  - Add K8s related deployment folder in Repo.
+  - Change Environment variable in Config.yaml (refer to Service manifest used for ASF for all used env variables from service manifest file and move to AKS config.yaml)
   - If you are using 2 docker files to run simultaneously ASF & AKS, then do the below changes to upgrade image to support 4.8 
        * Add new Docker file for AKS.
        * Change existing Docker file for ASF till it is not migrated to AKS production.
