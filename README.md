@@ -60,11 +60,11 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - Ignore Content, Fonts and Script folder while pushing the changes on git.
   - Comment the dependency from we.config file for System.Net.Http
 >     <!--<dependentAssembly>
->        <assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral"/>
+>        <assemblyIdentity name="System.Net.Http" publicKeyToken="xxxx" culture="neutral"/>
 >        <bindingRedirect oldVersion="0.0.0.0-4.2.0.0" newVersion="4.2.0.0"/>
 >     </dependentAssembly>-->
 >     <!--<dependentAssembly>
->        <assemblyIdentity name="System.IO.Compression" publicKeyToken="b77a5c561934e089" culture="neutral"/>
+>        <assemblyIdentity name="System.IO.Compression" publicKeyToken="xxxx" culture="neutral"/>
 >        <bindingRedirect oldVersion="0.0.0.0-4.2.0.0" newVersion="4.2.0.0"/>
 >      </dependentAssembly>-->
   - The target framework moniker (TFM) to apply when installing the package. This is initially set to the project's target when a package is installed. As a result, different <package> elements can have different TFMs. [Know more](https://learn.microsoft.com/en-us/nuget/reference/target-frameworks)
