@@ -100,7 +100,6 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - Add required yaml files for AKS.
 
 #### Pipeline Changes 
-  - Add AKSConfigPrefix in Web.config
   - Do ADO pipeline changes related to .NET FrameWork for Windows.Also check default agent pools supported versions.
   - Do Octopus Pipeline Changes Windows , Octopus Deploy Linux - Octopus Deploy.
   - All pipelines should be independently released so the apps team can take release any time. 
