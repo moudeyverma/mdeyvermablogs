@@ -4,7 +4,7 @@ This article is a direct recount of migration journey from ASF - containers to A
 ## Decision Factors
 The code is legacy and we didn't have enough time to rewrite the code within a short duration from .net framework to .net core and deploy all in Linux container.So we started our journey with combination of two types of workloads **Windows and Linux**.
 <br>
-Also choose the highest common supported .NET version for win 2019 and win 2022. If  ASF workloads are still modified and deployed in parallel in ASF using win 2019,  chose the latest common version 4.8. [know more](https://github.com/microsoft/dotnet-framework-docker/issues/849)
+Also we chose the highest common supported .NET version for win 2019 and win 2022. If  ASF workloads are still modified and deployed in parallel in ASF using win 2019,  choose the latest common version 4.8. [know more](https://github.com/microsoft/dotnet-framework-docker/issues/849)
 <br>
 #### We took the below approach to upgrade framework
   - Upgraded from .net framework current version to the latest version 4.8 and deployed in AKS **Windows** containers.(Approx 7x projects)
