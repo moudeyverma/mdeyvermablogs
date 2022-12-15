@@ -72,7 +72,7 @@ Make the workloads compatible, by checking the reports provided by the tool-
   **If your Service Fabric source also need a continuous deployment in pre production environments due to changes in feature ,upgrade of framework version of dependencies etc ,until there is a cut off for aks production , do consider the below points-
   - Check the [table](https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-versions) for service Fabric supported versions.
   - .NET Framework 4.8 is included with Server 2022
-  - Since the .net framework 4.8 is not come as packaged runtime version with SF ver-9.0.1048, server 2019(Current packaged .net version s 4.7.3), you have to install .net 4.8 manually in nodes.
+  - Since the .net framework 4.8 is not come as packaged runtime version with SF ver-9.x, server 2019(Current packaged .net version s 4.7.x), you have to install .net 4.8 manually in nodes.
   - Write a powershell script for Custion Script Extionsion. [Know More](https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows)
   - You can check exact versions by RDP into a node and run the following registry query: reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP" /s
   
