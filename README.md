@@ -93,10 +93,10 @@ Make the workloads compatible, by checking the reports provided by the tool-
 
 #### Pipeline Changes 
   - Do ADO pipeline changes related to .NET FrameWork for Windows.Also check default agent pools supported versions.
-  - Do Octopus Pipeline Changes Windows , Octopus Deploy Linux - Octopus Deploy.
+  - Do Pipeline Changes for Windows workloads , Deploy Linux workloads.
   - All pipelines should be independently released so the apps team can take release any time. 
-  - Disable DEV ADO and pipeline once they are good with aks
-  - Store andmanage the DLL versions.
+  - Disable DEV ADO and pipeline once they are good with aks.
+  - Store and manage the DLL versions.
   - Application team to communicate with all consumers about the New dll versions. Publish the documented process to consume the latest dlls for new changes. 
 
 #### AKS deployment related Changes
@@ -104,15 +104,15 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - In AKS if you need Windows Containers node pool, then while creating the cluster you need bydefault a system linux container node pool with at least three nodes.In the AKS cluster you have to use the "y --windows-admin-username parameter" otherwise AKS will not prepare itself for windows nodepools.[know more](https://learn.microsoft.com/en-us/azure/aks/learn/quick-windows-container-deploy-cli#create-an-aks-cluster)
   - Next create [windows nodepool](https://learn.microsoft.com/en-us/azure/aks/learn/quick-windows-container-deploy-cli#add-a-windows-server-2022-node-pool)
       * You may need to update the CLI version to higher version (2.40) with terraform deployment.
-  - Check Resource Quotas/RBAC at namespace level
+  - Check Resource Quotas/RBAC at namespace level.
   - Configure [scaling](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler)
-  - Review existing policy to handle AKS Configuration, maintain specific set of node type, number etc
-  - Maintain segregation of Node pool- system & user, use combination of taints/tolerations, node affinity + pod affinity in specified namespace for user node pool
-  - Use SLA backed AKS
-  - Use secrets from keyvault with CSI driver if they are used through config.yaml
-  - Optimize request and limit at pod level, after few deployments and testing are completed.
-  - Communication from namespace A to namespace B can be restricted through network policies
-  - Use ACR as image repository and [authenticate](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli)
+  - Review existing policy to handle AKS Configuration, maintain specific set of node type, number etc.
+  - Maintain segregation of Node pool- system & user, use combination of taints/tolerations, node affinity + pod affinity in specified namespace for user node pool.
+  - Use SLA backed AKS.
+  - Use secrets from keyvault with CSI driver if they are used through config.yaml.
+  - Don't overcommit the nodes. Optimize request and limit at pod level by observing metrices, after few deployments and testing are completed.
+  - Communication from namespace A to namespace B can be restricted through network policies.
+  - Use ACR as image repository and [authenticate](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli).
 
 ## Infra Changes 
   - Create New Subnet for AKS inside the existing Vnet. Subnet size-should be greater or equal to number of pods.
