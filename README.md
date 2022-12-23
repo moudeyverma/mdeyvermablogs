@@ -95,7 +95,7 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - Do ADO pipeline changes related to .NET FrameWork for Windows.Also check default agent pools supported versions.
   - Do Octopus Pipeline Changes Windows , Octopus Deploy Linux - Octopus Deploy.
   - All pipelines should be independently released so the apps team can take release any time. 
-  - Disable DEV ADO and Octopus pipeline once they are good with aks
+  - Disable DEV ADO and pipeline once they are good with aks
   - Store andmanage the DLL versions.
   - Application team to communicate with all consumers about the New dll versions. Publish the documented process to consume the latest dlls for new changes. 
 
@@ -150,7 +150,7 @@ Few more links-
  
 ## Performance Optimization
 With latest deployment in AKS, We performed various performance tests and used multiple tools.The outcome of these performance tests showed whether there is problem with overall performance or with the deployment. 
-<br>I could be due to lack of performance at the Underlay VMs themselves(not enough CPU, not enough Memory), lack of requests and limits defined at the pod level or requests and limits wrongly configured, it can be related to the Network on the node, can be from the application code itself.
+<br>It could be due to lack of performance at the Underlay VMs themselves(not enough CPU, not enough Memory), lack of requests and limits defined at the pod level or requests and limits wrongly configured, it can be related to the Network on the node, can be from the application code itself.
 <br>
 **Best practices**
 <br>
@@ -169,7 +169,7 @@ With latest deployment in AKS, We performed various performance tests and used m
 •	Gather Network stack traces and Process Dumps for given containers during the stress test (And not while manual / user testing). Find a way to maximize duration of capturing dumps.Capture [GCdump](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/), capture [Processdump](https://npmsblog.wordpress.com/how-to-generate-iis-w3wp-process-dump-from-aks-windows-pod/), capture [tcpdump](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/packet-capture-pod-level) from the pod level.
 <br>
 •	Use the monitoring tabs in the Azure portal, also connect to the nodes/pods and collect [logs](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/identify-memory-saturation-aks)
-• Check for average CPU and memory utilization,evidences of throttling,check if the pods are also up and running for the whole timestamp, also check if the pods are restarting. 
+• Check for average CPU and memory utilization, check the evidences of throttling, check if the pods are also up and running for the whole timestamp, also check if the pods are not restarting. 
 • If in scope then guide customer to check code base as well.
 <br>
 <br>
