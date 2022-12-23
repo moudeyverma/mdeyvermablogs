@@ -120,7 +120,7 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - Consider using Ephemeral OS disk (faster IOPS). Test throughput.
   >  Specify the ephemeral disks on the AKS cluster at creation time or when adding a new nodepool by specifying the following property:
   >  <br>[--node-osdisk-type {Ephemeral, Managed}]
-  - Avoid using custom dns.
+  - Avoid using custom dns(Check if DNS servers are underperforming or facing any issues.)
   - Use Static public IP address.
   - Use Azure vNET integration via Azure CNI
   - Considering using [Proximity Placement Group](https://learn.microsoft.com/en-us/azure/aks/reduce-latency-ppg#add-a-proximity-placement-group-to-an-existing-cluster).
@@ -169,6 +169,7 @@ With latest deployment in AKS, We performed various performance tests and used m
 •	Gather Network stack traces and Process Dumps for given containers during the stress test (And not while manual / user testing). Find a way to maximize duration of capturing dumps.Capture [GCdump](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/), capture [Processdump](https://npmsblog.wordpress.com/how-to-generate-iis-w3wp-process-dump-from-aks-windows-pod/), capture [tcpdump](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/packet-capture-pod-level) from the pod level.
 <br>
 •	Use the monitoring tabs in the Azure portal, also connect to the nodes/pods and collect [logs](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/identify-memory-saturation-aks)
+• Check for average CPU and memory utilization,evidences of throttling,check if the pods are also up and running for the whole timestamp, also check if the pods are restarting. 
 • If in scope then guide customer to check code base as well.
 <br>
 <br>
