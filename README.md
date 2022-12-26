@@ -120,7 +120,7 @@ Make the workloads compatible, by checking the reports provided by the tool-
   - Consider using Ephemeral OS disk (faster IOPS). Test throughput.
   >  Specify the ephemeral disks on the AKS cluster at creation time or when adding a new nodepool by specifying the following property:
   >  <br>[--node-osdisk-type {Ephemeral, Managed}]
-  - Avoid using custom dns(Check if DNS servers are underperforming or facing any issues.)
+  - Avoid using custom dns(Check if DNS servers are underperforming or facing any latency.)
   - Use Static public IP address.
   - Use Azure vNET integration via Azure CNI
   - Considering using [Proximity Placement Group](https://learn.microsoft.com/en-us/azure/aks/reduce-latency-ppg#add-a-proximity-placement-group-to-an-existing-cluster).
